@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <style>
+    .k{fill:none;stroke:#1F2428;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .a{fill:#F26B2B}
+  </style>
+  <circle class="k" cx="12" cy="12" r="10"/>
+  <path class="k" d="M6 12 L15 6.8"/>
+  <path class="k" d="M6 15.5 L16.5 9.8"/>
+  <path class="k" d="M6 19 L18 12.7"/>
+  <circle class="a" cx="18.95" cy="6.95" r="1.8"/>
+</svg>
