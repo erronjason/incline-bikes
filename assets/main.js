@@ -20,4 +20,53 @@
       el.classList.add('closed');
     }
   });
+  const togglePairs = [];
+  function updateBodyClass(){
+    const anyOpen = togglePairs.some(function(pair){
+      return pair.menu.classList.contains('is-open');
+    });
+    if(anyOpen){
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+  }
+  document.querySelectorAll('.menu-toggle').forEach(function(btn){
+    const menuId = btn.getAttribute('aria-controls');
+    if(!menuId){return;}
+    const menu = document.getElementById(menuId);
+    if(!menu){return;}
+    const pair = {btn:btn, menu:menu, setState:setState};
+    function setState(open){
+      const isOpen = Boolean(open);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menu.classList.toggle('is-open', isOpen);
+      updateBodyClass();
+    }
+    pair.setState = setState;
+    togglePairs.push(pair);
+    btn.addEventListener('click', function(){
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      setState(!expanded);
+    });
+    menu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        setState(false);
+      });
+    });
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 1023){
+      togglePairs.forEach(function(pair){
+        pair.setState(false);
+      });
+    }
+  });
+  document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape'){
+      togglePairs.forEach(function(pair){
+        pair.setState(false);
+      });
+    }
+  });
 })();

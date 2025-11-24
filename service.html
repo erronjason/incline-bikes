@@ -19,7 +19,15 @@
 <header>
   <div class="container nav">
     <a class="logo" href="index.html"><img class="logo-icon" src="assets/logo.svg" alt="" aria-hidden="true">inclinE‑Bikes</a>
-    <nav class="menu">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+      <span class="menu-toggle-box" aria-hidden="true">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav class="menu" id="primary-menu">
       <a href="rentals.html">Rentals</a>
       <a href="service.html">Service & Repairs</a>
       <a href="sales.html">E‑Bike Sales</a>
